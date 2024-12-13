@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as service from '../../services/firebasesometing.js'
+import * as service from '../../services/WorksCRUDservices'
 import { useNavigate} from 'react-router-dom'
 const AddWork = () => {
     const navigate = useNavigate();
@@ -22,8 +22,9 @@ const AddWork = () => {
     const submitHandler = (e) =>{
         e.preventDefault();
         service.addWork(formData)
+        navigate('/');
     }
-
+    
     return(
         <div className="card">
             <div className="card-header">Prideti atlikta darba</div>

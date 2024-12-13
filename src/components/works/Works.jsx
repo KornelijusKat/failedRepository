@@ -1,12 +1,14 @@
 import WorksTable from "../worksTable/WorksTable"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import * as service from '../../services/firebasesometing.js'
+import * as service from '../../services/WorksCRUDservices'
 const Works = ()=>{
     const [works, setWorks] = useState();
     useEffect(()=>{
-        service.getAllWorks();
-    },[]) 
+        service.getAllWorks(works=>{
+            setWorks(works)
+        })
+    },[])
     
     return(
     <div className="container">
@@ -16,7 +18,7 @@ const Works = ()=>{
             </li>
         </ul>
         <h2>Works</h2>
-        <WorksTable></WorksTable>
+        <WorksTable data={works}></WorksTable>
     </div>
     )
 }
